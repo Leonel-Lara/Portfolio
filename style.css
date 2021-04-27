@@ -5,6 +5,7 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 :root {
@@ -25,6 +26,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     cursor: pointer;
+    transition: all 1s;
 }
 
 .show-menu .hamburguer {
@@ -98,36 +100,91 @@ header {
     font-weight: 200;
     text-shadow: 0.2rem 0.3rem 2px rgba(0, 0, 0, 0.4);
     line-height: 3.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     opacity: 0;
     animation: moveBaneer 1.5s 0.5s forwards;
+    line-height: 5rem;
 }
 
 .presentantion p {
     font-family: var(--font-secundary);
     color: #fff;
-    font-size: 3rem;
+    font-size: 2rem;
     text-shadow: 0.2rem 0.2rem rgba(0, 0, 0, 0.4);
     margin-bottom: 2rem;
     opacity: 0;
     animation: moveBaneer 1.5s 0.7s forwards;
+    text-transform: uppercase;
 }
 
-.presentantion button {
+.button {
+    position: relative;
+    padding: 20px 50px;
+    display: block;
     font-family: var(--font-action);
+    text-transform: uppercase;
+    width: 14rem;
+    overflow: hidden;
+}
+
+.button span {
+    position: relative;
+    z-index: 1;
     color: #fff;
     font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
+    letter-spacing: .2rem;
+}
+
+.button .liquid {
+    position: absolute;
+    left: 0;
+    top: -6rem;
+    width: 14rem;
+    height: 14rem;
+    background: #823bb4;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+    transition: 1s;
+    
+}
+
+.button:hover .liquid {
+    top: -10rem;
+}
+
+.button .liquid::before,
+.button .liquid::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+}
+
+.button .liquid::before {
+    border-radius: 45%;
+    background: rgb(92, 42, 131, 1);
+    animation: animate 5s linear infinite;
+}
+
+.button .liquid::after {
+    border-radius: 40%;
+    background: rgba(92, 42, 131, 0.5);
+    animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -75%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
+
+.presentantion button:hover {
     background: #6a3093;
-    background: -webkit-linear-gradient(to right, #a044ff, #6a3093);
-    background: linear-gradient(to left, #a044ff, #6a3093);
-    padding: 1rem 3rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    opacity: 0;
-    animation: moveBaneer 1.5s 0.9s forwards;
 }
 
 @keyframes moveBaneer {
